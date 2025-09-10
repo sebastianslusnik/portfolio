@@ -1,123 +1,83 @@
-<!doctype html> <html lang="en"> <head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width,initial-scale=1"> <title>Freelance Web Developer — Ultra‑Modern Portfolio</title> <link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"> <style> :root { --bg: #0b0f17; --bg-2: #0f1424; --fg: #e6eef6; --muted: #9aa6b2; --panel: rgba(255,255,255,0.06); --border: rgba(255,255,255,0.14); --primary-a: #7c3aed; --primary-b: #06b6d4; --accent: #22d3ee; --success: #10b981; --danger: #ef4444; --shadow: 0 10px 30px rgba(0,0,0,.35); --radius: 16px; } * { box-sizing: border-box } html { scroll-behavior: smooth } @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto } } body { margin: 0; min-height: 100vh; color: var(--fg); background: radial-gradient(1200px 800px at 10% -10%, #1a103d 0%, transparent 40%), radial-gradient(1000px 800px at 110% 10%, #002b5b 0%, transparent 45%), linear-gradient(180deg, var(--bg), var(--bg-2) 60%, var(--bg)); font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; overflow-x: hidden; } body::before, body::after { content: ""; position: fixed; inset: -20vmax -20vmax auto auto; width: 40vmax; height: 40vmax; background: radial-gradient(circle at 30% 30%, rgba(124,58,237,.18), transparent 60%), radial-gradient(circle at 70% 70%, rgba(34,211,238,.12), transparent 55%); filter: blur(60px) saturate(120%); z-index: -1; transform: translate3d(0,0,0); animation: float1 22s ease-in-out infinite alternate; } body::after { inset: auto auto -20vmax -10vmax; width: 48vmax; height: 48vmax; background: radial-gradient(circle at 60% 40%, rgba(6,182,212,.14), transparent 55%), radial-gradient(circle at 30% 70%, rgba(124,58,237,.16), transparent 60%); animation: float2 28s ease-in-out infinite alternate; } @keyframes float1 { from { transform: translate3d(-2vmax,0,0) } to { transform: translate3d(2vmax,2vmax,0) } } @keyframes float2 { from { transform: translate3d(2vmax,-1vmax,0) } to { transform: translate3d(-2vmax,1vmax,0) } }
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Freelance Web Developer — Ultra‑Modern Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root { --bg: #0b0f17; --bg-2: #0f1424; --fg: #e6eef6; --muted: #9aa6b2; --panel: rgba(255,255,255,0.06); --border: rgba(255,255,255,0.14); --primary-a: #7c3aed; --primary-b: #06b6d4; --accent: #22d3ee; --success: #10b981; --danger: #ef4444; --shadow: 0 10px 30px rgba(0,0,0,.35); --radius: 16px }
+* { box-sizing: border-box }
+html { scroll-behavior: smooth }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto } }
+body {
+margin: 0; min-height: 100vh; color: var(--fg);
+background:
+radial-gradient(1200px 800px at 10% -10%, #1a103d 0%, transparent 40%),
+radial-gradient(1000px 800px at 110% 10%, #002b5b 0%, transparent 45%),
+linear-gradient(180deg, var(--bg), var(--bg-2) 60%, var(--bg));
+font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+overflow-x: hidden
+}
+body::before, body::after {
+content: ""; position: fixed; inset: -20vmax -20vmax auto auto; width: 40vmax; height: 40vmax;
+background: radial-gradient(circle at 30% 30%, rgba(124,58,237,.18), transparent 60%), radial-gradient(circle at 70% 70%, rgba(34,211,238,.12), transparent 55%);
+filter: blur(60px) saturate(120%); z-index: -1; transform: translate3d(0,0,0); animation: float1 22s ease-in-out infinite alternate
+}
+body::after { inset: auto auto -20vmax -10vmax; width: 48vmax; height: 48vmax; background: radial-gradient(circle at 60% 40%, rgba(6,182,212,.14), transparent 55%), radial-gradient(circle at 30% 70%, rgba(124,58,237,.16), transparent 60%); animation: float2 28s ease-in-out infinite alternate }
+@keyframes float1 { from { transform: translate3d(-2vmax,0,0) } to { transform: translate3d(2vmax,2vmax,0) } }
+@keyframes float2 { from { transform: translate3d(2vmax,-1vmax,0) } to { transform: translate3d(-2vmax,1vmax,0) } }
+
 .container { width: min(1120px, 92vw); margin-inline: auto }
 .section { min-height: 100vh; display: flex; align-items: center; padding: 120px 0 80px; scroll-snap-align: start }
 .wrapper { width: min(1120px, 92vw); margin-inline: auto }
 
-header.nav {
-position: sticky;
-top: 0;
-z-index: 50;
-backdrop-filter: saturate(180%) blur(14px);
-background: linear-gradient(180deg, rgba(10,12,20,.7), rgba(10,12,20,.3));
-border-bottom: 1px solid var(--border);
-}
+header.nav { position: sticky; top: 0; z-index: 50; backdrop-filter: saturate(180%) blur(14px); background: linear-gradient(180deg, rgba(10,12,20,.7), rgba(10,12,20,.3)); border-bottom: 1px solid var(--border) }
 .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; width: min(1120px, 92vw); margin: 0 auto }
-.logo {
-font-weight: 900;
-letter-spacing: .5px;
-font-size: 1.1rem;
-display: inline-flex;
-align-items: center;
-gap: .6rem;
-}
+.logo { font-weight: 900; letter-spacing: .5px; font-size: 1.1rem; display: inline-flex; align-items: center; gap: .6rem }
 .logo-badge {
-display: inline-grid;
-place-items: center;
-width: 28px; height: 28px;
-border-radius: 8px;
+display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 8px;
 background: conic-gradient(from 0deg, var(--primary-a), var(--primary-b), var(--primary-a));
-color: #0c0f18;
-font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
-font-weight: 900;
-font-size: .9rem;
-box-shadow: 0 8px 24px rgba(124,58,237,.35), inset 0 0 10px rgba(255,255,255,.25);
+color: #0c0f18; font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-weight: 900; font-size: .9rem;
+box-shadow: 0 8px 24px rgba(124,58,237,.35), inset 0 0 10px rgba(255,255,255,.25)
 }
-nav a {
-color: var(--fg);
-text-decoration: none;
-font-weight: 600;
-opacity: .9;
-transition: opacity .2s ease, transform .2s ease;
-}
+nav a { color: var(--fg); text-decoration: none; font-weight: 600; opacity: .9; transition: opacity .2s ease, transform .2s ease }
 nav a:hover { opacity: 1; transform: translateY(-1px) }
 .nav-links { display: flex; gap: 1.2rem; align-items: center }
 .btn {
-display: inline-flex; align-items: center; justify-content: center;
-gap: .5rem;
-padding: .8rem 1.1rem;
-border-radius: 12px;
-border: 1px solid var(--border);
-background: var(--panel);
-color: var(--fg);
-text-decoration: none;
-font-weight: 700;
-letter-spacing: .2px;
-transition: transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease, opacity .18s ease;
-box-shadow: var(--shadow);
+display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+padding: .8rem 1.1rem; border-radius: 12px; border: 1px solid var(--border); background: var(--panel); color: var(--fg);
+text-decoration: none; font-weight: 700; letter-spacing: .2px; transition: transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease, opacity .18s ease; box-shadow: var(--shadow)
 }
 .btn:hover { transform: translateY(-2px) }
-.btn.primary {
-border: 0;
-background: linear-gradient(90deg, var(--primary-a), var(--primary-b));
-box-shadow: 0 10px 25px rgba(34,211,238,.22), 0 6px 16px rgba(124,58,237,.25);
-}
+.btn.primary { border: 0; background: linear-gradient(90deg, var(--primary-a), var(--primary-b)); box-shadow: 0 10px 25px rgba(34,211,238,.22), 0 6px 16px rgba(124,58,237,.25) }
 .btn.ghost { background: transparent; border-color: rgba(255,255,255,.24) }
 .btn.small { padding: .6rem .9rem; font-weight: 700; border-radius: 10px }
 
 .hero .wrapper { display: grid; gap: 1.6rem }
-.eyebrow {
-font-size: .9rem;
-color: var(--accent);
-letter-spacing: .16em;
-text-transform: uppercase;
-font-weight: 800;
-}
+.eyebrow { font-size: .9rem; color: var(--accent); letter-spacing: .16em; text-transform: uppercase; font-weight: 800 }
 h1 {
-font-size: clamp(2.4rem, 6vw, 4.2rem);
-line-height: 1.05;
-margin: 0;
-background: linear-gradient(90deg, #ffffff, #a0e9ff 30%, #d0b3ff 60%, #ffffff 100%);
--webkit-background-clip: text;
-background-clip: text;
-color: transparent;
-filter: drop-shadow(0 6px 30px rgba(124,58,237,.18));
+font-size: clamp(2.4rem, 6vw, 4.2rem); line-height: 1.05; margin: 0;
+background: linear-gradient(90deg, #ffffff, #a0e9ff 30%, #d0b3ff 60%, #ffffff 100%); -webkit-background-clip: text; background-clip: text; color: transparent;
+filter: drop-shadow(0 6px 30px rgba(124,58,237,.18))
 }
-.sub {
-font-size: clamp(1rem, 1.2vw, 1.125rem);
-color: var(--muted);
-max-width: 58ch;
-}
+.sub { font-size: clamp(1rem, 1.2vw, 1.125rem); color: var(--muted); max-width: 58ch }
 .cta { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: .4rem }
 .stats { display: flex; gap: 1.2rem; flex-wrap: wrap; margin-top: .6rem }
 .stat {
-background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
-border: 1px solid var(--border);
-padding: .8rem 1rem;
-border-radius: 12px;
-color: var(--muted);
-font-weight: 600;
+background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04)); border: 1px solid var(--border);
+padding: .8rem 1rem; border-radius: 12px; color: var(--muted); font-weight: 600
 }
 .stat span { font-size: 1.2rem; color: var(--fg); font-weight: 800; margin-right: .35rem }
 
-.hero-decor {
-position: absolute; inset: 0; pointer-events: none; overflow: hidden
-}
-.orb {
-position: absolute; width: 32vmax; height: 32vmax; border-radius: 50%;
-filter: blur(28px) saturate(140%);
-opacity: .25;
-mix-blend-mode: screen;
-background: radial-gradient(circle at 30% 30%, rgba(124,58,237,.85), transparent 60%),
-radial-gradient(circle at 70% 70%, rgba(6,182,212,.8), transparent 60%);
-animation: orbMove 28s ease-in-out infinite;
-}
+.hero-decor { position: absolute; inset: 0; pointer-events: none; overflow: hidden }
+.orb { position: absolute; width: 32vmax; height: 32vmax; border-radius: 50%; filter: blur(28px) saturate(140%); opacity: .25; mix-blend-mode: screen; background: radial-gradient(circle at 30% 30%, rgba(124,58,237,.85), transparent 60%), radial-gradient(circle at 70% 70%, rgba(6,182,212,.8), transparent 60%); animation: orbMove 28s ease-in-out infinite }
 .orb.b { width: 24vmax; height: 24vmax; left: 70%; top: 20%; animation-duration: 34s; opacity: .2 }
 @keyframes orbMove { 0% { transform: translate3d(-10%, 0, 0) } 50% { transform: translate3d(6%, -4%, 0) } 100% { transform: translate3d(-8%, 3%, 0) } }
 
-.section h2 {
-font-size: clamp(1.8rem, 3.2vw, 2.6rem);
-margin: 0 0 .6rem;
-}
+.section h2 { font-size: clamp(1.8rem, 3.2vw, 2.6rem); margin: 0 0 .6rem }
 .lead { color: var(--muted); margin: 0 0 1.6rem }
 
 .grid { display: grid; gap: 1.2rem }
@@ -125,106 +85,74 @@ margin: 0 0 .6rem;
 @media (max-width: 980px) { .projects { grid-template-columns: repeat(2, 1fr) } }
 @media (max-width: 680px) { .projects { grid-template-columns: 1fr } }
 
-.card {
-border-radius: var(--radius);
-border: 1px solid var(--border);
-background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-overflow: hidden;
-box-shadow: var(--shadow);
-}
+.card { border-radius: var(--radius); border: 1px solid var(--border); background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); overflow: hidden; box-shadow: var(--shadow) }
 .project .thumb {
-position: relative;
-aspect-ratio: 16/9;
-background:
-radial-gradient(120% 120% at 80% 20%, rgba(34,211,238,.3), transparent 40%),
-radial-gradient(120% 120% at 20% 80%, rgba(124,58,237,.35), transparent 45%),
-linear-gradient(135deg, #0f172a, #0b1222);
-display: grid; place-items: center;
-overflow: hidden;
-transform: translateZ(0);
+position: relative; aspect-ratio: 16/9;
+background: radial-gradient(120% 120% at 80% 20%, rgba(34,211,238,.3), transparent 40%), radial-gradient(120% 120% at 20% 80%, rgba(124,58,237,.35), transparent 45%), linear-gradient(135deg, #0f172a, #0b1222);
+display: grid; place-items: center; overflow: hidden; transform: translateZ(0)
 }
 .thumb .mock {
-width: 86%; height: 70%;
-border-radius: 12px;
-background:
-linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02)),
-repeating-linear-gradient(90deg, rgba(255,255,255,.08) 0 2px, transparent 2px 6px);
-border: 1px solid rgba(255,255,255,.16);
-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 20px 40px rgba(0,0,0,.35);
+width: 86%; height: 70%; border-radius: 12px;
+background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02)), repeating-linear-gradient(90deg, rgba(255,255,255,.08) 0 2px, transparent 2px 6px);
+border: 1px solid rgba(255,255,255,.16); box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 20px 40px rgba(0,0,0,.35)
 }
 .project .card-body { padding: 1rem 1rem 1.2rem }
 .project h3 { margin: .2rem 0 .4rem; font-size: 1.2rem }
 .tags { display: flex; gap: .5rem; flex-wrap: wrap; margin: .5rem 0 .9rem }
-.tags span {
-font-family: "JetBrains Mono", ui-monospace, monospace;
-font-size: .75rem;
-color: var(--muted);
-padding: .25rem .5rem;
-border: 1px solid rgba(255,255,255,.16);
-border-radius: 999px;
-background: rgba(255,255,255,.04);
-}
+.tags span { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: .75rem; color: var(--muted); padding: .25rem .5rem; border: 1px solid rgba(255,255,255,.16); border-radius: 999px; background: rgba(255,255,255,.04) }
 
-.pricing { grid-template-columns: repeat(3, 1fr) }
-@media (max-width: 980px) { .pricing { grid-template-columns: 1fr } }
-.price.card {
-position: relative;
-padding: 1.2rem;
-background:
-linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
-}
-.price .badge {
-position: absolute; top: 14px; right: 14px;
-background: linear-gradient(90deg, var(--primary-a), var(--primary-b));
-color: #061018;
-padding: .35rem .6rem; border-radius: 999px; font-size: .72rem; font-weight: 900; letter-spacing: .04em
-}
+.pricing { grid-template-columns: repeat(4, 1fr) }
+@media (max-width: 1160px) { .pricing { grid-template-columns: repeat(2, 1fr) } }
+@media (max-width: 680px) { .pricing { grid-template-columns: 1fr } }
+.price.card { position: relative; padding: 1.2rem; background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04)) }
+.price .badge { position: absolute; top: 14px; right: 14px; background: linear-gradient(90deg, var(--primary-a), var(--primary-b)); color: #061018; padding: .35rem .6rem; border-radius: 999px; font-size: .72rem; font-weight: 900; letter-spacing: .04em }
 .price h3 { margin: .2rem 0 .6rem }
-.price .price {
-display: flex; align-items: baseline; gap: .3rem;
-margin-bottom: .6rem; font-weight: 900
-}
+.price .price { display: flex; align-items: baseline; gap: .3rem; margin-bottom: .6rem; font-weight: 900 }
 .price .currency { opacity: .8 }
 .price .amount { font-size: 2rem; background: linear-gradient(90deg, #fff, #bfe8ff); -webkit-background-clip: text; background-clip: text; color: transparent }
 .price .term { font-size: .9rem; color: var(--muted) }
 .features { list-style: none; padding: 0; margin: 0 0 1rem; display: grid; gap: .5rem }
 .features li { display: grid; grid-template-columns: 20px 1fr; align-items: start; gap: .5rem; color: var(--fg) }
 .features li::before { content: "✓"; color: var(--success); font-weight: 900 }
+.price-footer { color: var(--muted); font-size: .9rem }
 
-.form {
-display: grid; gap: 1rem; width: min(800px, 100%)
+.calc.card { padding: 1.2rem }
+.calc h3 { margin: 0 0 .6rem }
+.calc-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem }
+@media (max-width: 980px) { .calc-grid { grid-template-columns: 1fr } }
+.calc .field { display: grid; gap: .4rem }
+.calc .inline { display: grid; grid-template-columns: 1fr auto; gap: .6rem; align-items: center }
+.estimate {
+margin-top: 1rem; padding: 1rem; border-radius: 12px;
+border: 1px solid var(--border); background: rgba(255,255,255,.04);
+display: grid; gap: .4rem
 }
+.estimate .big { font-size: 2rem; font-weight: 900; background: linear-gradient(90deg, #fff, #bfe8ff); -webkit-background-clip: text; background-clip: text; color: transparent }
+.kicker { color: var(--muted); font-size: .95rem }
+
+.form { display: grid; gap: 1rem; width: min(800px, 100%) }
 .field { display: grid; gap: .4rem }
 label span.label { font-weight: 700; color: var(--fg) }
 input, textarea, select {
-width: 100%;
-padding: .9rem 1rem;
-border-radius: 12px;
-border: 1px solid var(--border);
-background: rgba(255,255,255,.04);
-color: var(--fg);
-outline: none;
-transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
-box-shadow: inset 0 1px 0 rgba(255,255,255,.06);
-font-size: 1rem;
+width: 100%; padding: .9rem 1rem; border-radius: 12px; border: 1px solid var(--border);
+background: rgba(255,255,255,.04); color: var(--fg); outline: none;
+transition: border-color .2s ease, box-shadow .2s ease, background .2s ease; box-shadow: inset 0 1px 0 rgba(255,255,255,.06); font-size: 1rem
 }
 textarea { min-height: 140px; resize: vertical }
-input:focus, textarea:focus, select:focus {
-border-color: rgba(34,211,238,.6);
-box-shadow: 0 0 0 6px rgba(34,211,238,.12);
-background: rgba(255,255,255,.06);
-}
+input:focus, textarea:focus, select:focus { border-color: rgba(34,211,238,.6); box-shadow: 0 0 0 6px rgba(34,211,238,.12); background: rgba(255,255,255,.06) }
 .error { color: var(--danger); min-height: 1.2em; font-size: .9rem }
 .form-actions { display: flex; gap: .8rem; align-items: center }
 .form-status { min-height: 1.2em; color: var(--muted) }
 
-footer {
-padding: 40px 0 60px;
-text-align: center;
-color: var(--muted);
-border-top: 1px solid var(--border);
-background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.04));
-}
+.contact-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 1.2rem; align-items: start }
+@media (max-width: 980px) { .contact-grid { grid-template-columns: 1fr } }
+.contact-card { padding: 1.2rem }
+.contact-list { list-style: none; padding: 0; margin: 0; display: grid; gap: .6rem }
+.contact-list a { color: var(--fg); text-decoration: none }
+.contact-list a:hover { text-decoration: underline }
+.pill { display: inline-block; padding: .25rem .6rem; border-radius: 999px; border: 1px solid var(--border); background: rgba(255,255,255,.05); font-family: "JetBrains Mono", ui-monospace, monospace; font-size: .78rem; color: var(--muted) }
+
+footer { padding: 40px 0 60px; text-align: center; color: var(--muted); border-top: 1px solid var(--border); background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.04)) }
 
 [data-animate] { opacity: 0; transform: translateY(20px) scale(.98); filter: blur(8px) saturate(120%); transition: transform .9s cubic-bezier(.2,.7,.1,1), opacity .6s ease, filter .6s ease }
 .in-view { opacity: 1; transform: translateY(0) scale(1); filter: blur(0) }
@@ -235,19 +163,592 @@ background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.04)
 html, body { scroll-snap-type: y mandatory }
 @media (max-width: 768px) { html, body { scroll-snap-type: y proximity } }
 
-#transition {
-position: fixed; inset: 0; z-index: 100;
-transform: translateY(100%);
-background:
-radial-gradient(120% 120% at 80% 20%, rgba(34,211,238,.35), transparent 50%),
-radial-gradient(120% 120% at 20% 80%, rgba(124,58,237,.45), transparent 50%),
-linear-gradient(180deg, #070a12, #0b0f17 40%, #070a12);
-pointer-events: none;
+#transition { position: fixed; inset: 0; z-index: 100; transform: translateY(100%); background: radial-gradient(120% 120% at 80% 20%, rgba(34,211,238,.35), transparent 50%), radial-gradient(120% 120% at 20% 80%, rgba(124,58,237,.45), transparent 50%), linear-gradient(180deg, #070a12, #0b0f17 40%, #070a12); pointer-events: none }
+
+.code-float {
+position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: .18; font-family: "JetBrains Mono", ui-monospace, monospace; mix-blend-mode: screen
+}
+.code-float span {
+position: absolute; color: #cfe7ff; font-weight: 600; text-shadow: 0 8px 20px rgba(0,0,0,.35);
+animation: drift var(--dur, 28s) linear infinite; transform: translate3d(0,0,0); will-change: transform; white-space: nowrap
+}
+@keyframes drift {
+0% { transform: translate3d(var(--xStart, 0), 110vh, 0) rotate(0.001deg) }
+100% { transform: translate3d(var(--xEnd, 0), -20vh, 0) rotate(0.001deg) }
 }
 
 @media (prefers-reduced-motion: reduce) {
 [data-animate] { opacity: 1; transform: none; filter: none }
+.code-float { display: none }
 }
 </style>
+</head>
+<body>
+<div id="transition" aria-hidden="true"></div>
+<header class="nav">
+<div class="nav-inner">
+<div class="logo"><span class="logo-badge">JD</span><span>Jade Doe — Web Dev</span></div>
+<nav class="nav-links" aria-label="Primary">
+<a href="#home">Home</a>
+<a href="#projects">Projects</a>
+<a href="#pricing">Pricing</a>
+<a href="#contact" class="btn primary">Hire Me</a>
+</nav>
+</div>
+</header>
 
-</head> <body> <div id="transition" aria-hidden="true"></div> <header class="nav"> <div class="nav-inner"> <div class="logo"> <span class="logo-badge">JD</span> <span>Jade Doe — Web Dev</span> </div> <nav class="nav-links" aria-label="Primary"> <a href="#home">Home</a> <a href="#projects">Projects</a> <a href="#pricing">Pricing</a> <a href="#contact" class="btn primary">Hire Me</a> </nav> </div> </header> <main> <section id="home" class="section hero" aria-label="Introduction"> <div class="wrapper"> <span class="eyebrow" data-animate>Freelance Web Developer</span> <h1 data-animate data-delay="1">Ultra‑modern websites that convert</h1> <p class="sub" data-animate data-delay="2">I design, build, and ship fast, accessible, conversion‑driven web experiences using modern stacks and meticulous craft.</p> <div class="cta" data-animate data-delay="3"> <a href="#projects" class="btn primary">View Projects</a> <a href="#contact" class="btn ghost">Get a Quote</a> </div> <div class="stats" data-animate data-delay="3"> <div class="stat"><span>50+</span>projects</div> <div class="stat"><span>98%</span>satisfaction</div> <div class="stat"><span>5y</span>experience</div> </div> </div> <div class="hero-decor" aria-hidden="true"> <div class="orb a" style="left:-10%; top:10%"></div> <div class="orb b"></div> </div> </section> <section id="projects" class="section" aria-label="Recent Projects"> <div class="wrapper"> <h2 data-animate>Recent Projects</h2> <p class="lead" data-animate data-delay="1">Selected work crafted with performance, accessibility, and delightful UX.</p> <div class="grid projects"> <article class="card project" data-animate data-delay="1"> <div class="thumb" data-tilt> <div class="mock" aria-hidden="true"></div> </div> <div class="card-body"> <h3>Nova Commerce</h3> <p class="sub">Headless storefront with Next.js, Edge Middleware, and Stripe Checkout.</p> <div class="tags"> <span>Next.js</span><span>Stripe</span><span>Vercel</span> </div> <a href="#" class="btn small">Case Study</a> </div> </article> <article class="card project" data-animate data-delay="2"> <div class="thumb" data-tilt> <div class="mock" aria-hidden="true"></div> </div> <div class="card-body"> <h3>Pulse Analytics</h3> <p class="sub">Realtime SaaS dashboard with WebSockets, theming, and role‑based access.</p> <div class="tags"> <span>React</span><span>Node</span><span>Postgres</span> </div> <a href="#" class="btn small">Case Study</a> </div> </article> <article class="card project" data-animate data-delay="3"> <div class="thumb" data-tilt> <div class="mock" aria-hidden="true"></div> </div> <div class="card-body"> <h3>Aurora Studio</h3> <p class="sub">Premium creative site with GSAP micro‑interactions and WebGL shader accents.</p> <div class="tags"> <span>GSAP</span><span>Three.js</span><span>SSR</span> </div> <a href="#" class="btn small">Case Study</a> </div> </article> </div> </div> </section> <section id="pricing" class="section" aria-label="Pricing"> <div class="wrapper"> <h2 data-animate>Pricing</h2> <p class="lead" data-animate data-delay="1">Transparent, flexible options tailored to your project scope.</p> <div class="grid pricing"> <div class="card price" data-animate data-delay="1"> <span class="badge">Popular</span> <h3>Launch</h3> <div class="price"><span class="currency">$</span><span class="amount">2,500</span><span class="term">/project</span></div> <ul class="features"> <li>Up to 5 pages</li> <li>Responsive design</li> <li>SEO essentials</li> <li>Analytics setup</li> <li>2 weeks delivery</li> </ul> <a href="#contact" class="btn primary">Start</a> </div> <div class="card price" data-animate data-delay="2"> <h3>Scale</h3> <div class="price"><span class="currency">$</span><span class="amount">6,500</span><span class="term">/project</span></div> <ul class="features"> <li>10–20 pages</li> <li>CMS integration</li> <li>Advanced animations</li> <li>Performance budget</li> <li>4–6 weeks delivery</li> </ul> <a href="#contact" class="btn primary">Plan a Build</a> </div> <div class="card price" data-animate data-delay="3"> <h3>Partner</h3> <div class="price"><span class="currency">$</span><span class="amount">3,000</span><span class="term">/mo</span></div> <ul class="features"> <li>Ongoing improvements</li> <li>A/B testing</li> <li>Priority support</li> <li>Monthly roadmap</li> <li>Cancel anytime</li> </ul> <a href="#contact" class="btn primary">Retain Me</a> </div> </div> </div> </section> <section id="contact" class="section" aria-label="Contact"> <div class="wrapper"> <h2 data-animate>Contact</h2> <p class="lead" data-animate data-delay="1">Tell me about your project. I respond within 24 hours.</p> <form id="contact-form" class="form" novalidate data-animate data-delay="2"> <div class="field"> <label> <span class="label">Name</span> <input type="text" name="name" placeholder="Your full name" required> </label> <span class="error" data-error-for="name"></span> </div> <div class="field"> <label> <span class="label">Email</span> <input type="email" name="email" inputmode="email" placeholder="you@company.com" required> </label> <span class="error" data-error-for="email"></span> </div> <div class="field"> <label> <span class="label">Budget</span> <select name="budget" required> <option value="" disabled selected>Select a range</option> <option value="2500-5000">$2,500 – $5,000</option> <option value="5000-10000">$5,000 – $10,000</option> <option value="10000+">$10,000+</option> </select> </label> <span class="error" data-error-for="budget"></span> </div> <div class="field"> <label> <span class="label">Project Details</span> <textarea name="message" placeholder="What are you building? Goals, timeline, and any links." required minlength="20"></textarea> </label> <span class="error" data-error-for="message"></span> </div> <div class="form-actions"> <button type="submit" class="btn primary">Send Message</button> <span class="form-status" id="form-status" role="status" aria-live="polite"></span> </div> </form> </div> </section> </main> <footer> <div class="wrapper"> <div>© <span id="year"></span> Jade Doe. Built with love, caffeine, and clean code.</div> </div> </footer> <script> const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches; const io = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('in-view'); }); }, { threshold: 0.2 }); document.querySelectorAll('[data-animate]').forEach(el => io.observe(el)); const curtain = document.getElementById('transition'); function transitionTo(target) { if (!target) return; if (reduceMotion) { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; } const inAnim = curtain.animate( [{ transform: 'translateY(100%)' }, { transform: 'translateY(0%)' }], { duration: 520, easing: 'cubic-bezier(.6,.2,.1,1)', fill: 'forwards' } ); inAnim.finished.then(() => { target.scrollIntoView({ behavior: 'auto', block: 'start' }); return curtain.animate( [{ transform: 'translateY(0%)' }, { transform: 'translateY(-100%)' }], { duration: 620, easing: 'cubic-bezier(.6,.2,.1,1)', fill: 'forwards' } ).finished; }).then(() => { curtain.style.transform = 'translateY(100%)'; }); } document.querySelectorAll('a[href^="#"]').forEach(a => { a.addEventListener('click', e => { const id = a.getAttribute('href').slice(1); const target = document.getElementById(id); if (target) { e.preventDefault(); transitionTo(target); } }); }); document.querySelectorAll('[data-tilt]').forEach(el => { const max = 10; let frame; function setTilt(x, y) { el.style.transform = `perspective(900px) rotateX(${y}deg) rotateY(${x}deg)`; } el.addEventListener('pointermove', e => { const r = el.getBoundingClientRect(); const px = (e.clientX - r.left) / r.width; const py = (e.clientY - r.top) / r.height; const rotY = (px - 0.5) * max * 2; const rotX = (0.5 - py) * max * 2; if (frame) cancelAnimationFrame(frame); frame = requestAnimationFrame(() => setTilt(rotY.toFixed(2), rotX.toFixed(2))); }); el.addEventListener('pointerleave', () => { if (frame) cancelAnimationFrame(frame); el.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg)'; }); }); const form = document.getElementById('contact-form'); const statusEl = document.getElementById('form-status'); const errors = { name: 'Please enter your name.', email: 'Please enter a valid email address.', budget: 'Please select a budget range.', message: 'Please provide at least 20 characters.' }; function showError(name, message) { const el = document.querySelector(`[data-error-for="${name}"]`); if (el) el.textContent = message || ''; } function validateField(field) { let valid = true; if (!field.value || (field.name === 'message' && field.value.trim().length < 20)) valid = false; if (field.type === 'email') { const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value); if (!ok) valid = false; } showError(field.name, valid ? '' : errors[field.name]); return valid; } form.addEventListener('input', e => { if (e.target.name) validateField(e.target); }); form.addEventListener('submit', e => { e.preventDefault(); const fields = ['name', 'email', 'budget', 'message'].map(n => form.elements[n]); const allValid = fields.every(validateField); if (!allValid) { statusEl.textContent = 'Please fix the errors above.'; return; } statusEl.textContent = 'Sending...'; const btn = form.querySelector('button[type="submit"]'); btn.disabled = true; setTimeout(() => { statusEl.textContent = 'Thanks! Your message has been sent.'; statusEl.style.color = 'var(--success)'; form.reset(); btn.disabled = false; }, 1000); }); document.getElementById('year').textContent = new Date().getFullYear(); </script> </body> </html>
+<div class="code-float" aria-hidden="true">
+<span style="left:5%; font-size:18px; --dur:34s; --xStart: -10vw; --xEnd: 4vw; animation-delay: -2s;">const launch = () => build()</span>
+<span style="left:20%; font-size:22px; --dur:30s; --xStart: -6vw; --xEnd: 2vw; animation-delay: -9s;">{ data, status } = useFetch()</span>
+<span style="left:35%; font-size:16px; --dur:26s; --xStart: -2vw; --xEnd: 1vw; animation-delay: -14s;">&lt;div class="card"&gt;&lt;/div&gt;</span>
+<span style="left:50%; font-size:28px; --dur:32s; --xStart: 3vw; --xEnd: -3vw; animation-delay: -18s;">(x) =&gt; x.map(n =&gt; n+1)</span>
+<span style="left:65%; font-size:20px; --dur:24s; --xStart: 0vw; --xEnd: -2vw; animation-delay: -6s;">git commit -m "ship"</span>
+<span style="left:80%; font-size:24px; --dur:36s; --xStart: 4vw; --xEnd: -4vw; animation-delay: -22s;">SELECT * FROM users;</span>
+<span style="left:12%; font-size:26px; --dur:40s; --xStart: -3vw; --xEnd: 3vw; animation-delay: -27s;">01001001 01001110 01001110</span>
+<span style="left:28%; font-size:18px; --dur:27s; --xStart: 2vw; --xEnd: -1vw; animation-delay: -11s;">npm run build</span>
+<span style="left:44%; font-size:30px; --dur:31s; --xStart: -4vw; --xEnd: 2vw; animation-delay: -19s;">&lt;/&gt;</span>
+<span style="left:72%; font-size:18px; --dur:25s; --xStart: 1vw; --xEnd: -1vw; animation-delay: -5s;">async function deploy(){}</span>
+<span style="left:88%; font-size:22px; --dur:33s; --xStart: -2vw; --xEnd: 2vw; animation-delay: -13s;">curl -I https://site.dev</span>
+</div>
+
+<main>
+<section id="home" class="section hero" aria-label="Introduction">
+<div class="wrapper">
+<span class="eyebrow" data-animate>Freelance Web Developer</span>
+<h1 data-animate data-delay="1">Ultra‑modern websites that convert</h1>
+<p class="sub" data-animate data-delay="2">I design, build, and ship fast, accessible, conversion‑driven web experiences using modern stacks and meticulous craft.</p>
+<div class="cta" data-animate data-delay="3">
+<a href="#projects" class="btn primary">View Projects</a>
+<a href="#pricing" class="btn ghost">Get a Quote</a>
+</div>
+<div class="stats" data-animate data-delay="3">
+<div class="stat"><span>50+</span>projects</div>
+<div class="stat"><span>98%</span>satisfaction</div>
+<div class="stat"><span>5y</span>experience</div>
+</div>
+</div>
+<div class="hero-decor" aria-hidden="true">
+<div class="orb a" style="left:-10%; top:10%"></div>
+<div class="orb b"></div>
+</div>
+</section>
+
+<section id="projects" class="section" aria-label="Recent Projects">
+<div class="wrapper">
+<h2 data-animate>Recent Projects</h2>
+<p class="lead" data-animate data-delay="1">Selected work crafted with performance, accessibility, and delightful UX.</p>
+<div class="grid projects">
+<article class="card project" data-animate data-delay="1">
+<div class="thumb" data-tilt><div class="mock" aria-hidden="true"></div></div>
+<div class="card-body">
+<h3>Nova Commerce</h3>
+<p class="sub">Headless storefront with Next.js, Edge Middleware, and Stripe Checkout.</p>
+<div class="tags"><span>Next.js</span><span>Stripe</span><span>Vercel</span></div>
+<a href="#" class="btn small">Case Study</a>
+</div>
+</article>
+<article class="card project" data-animate data-delay="2">
+<div class="thumb" data-tilt><div class="mock" aria-hidden="true"></div></div>
+<div class="card-body">
+<h3>Pulse Analytics</h3>
+<p class="sub">Realtime SaaS dashboard with WebSockets, theming, and role‑based access.</p>
+<div class="tags"><span>React</span><span>Node</span><span>Postgres</span></div>
+<a href="#" class="btn small">Case Study</a>
+</div>
+</article>
+<article class="card project" data-animate data-delay="3">
+<div class="thumb" data-tilt><div class="mock" aria-hidden="true"></div></div>
+<div class="card-body">
+<h3>Aurora Studio</h3>
+<p class="sub">Premium creative site with GSAP micro‑interactions and WebGL shader accents.</p>
+<div class="tags"><span>GSAP</span><span>Three.js</span><span>SSR</span></div>
+<a href="#" class="btn small">Case Study</a>
+</div>
+</article>
+</div>
+</div>
+</section>
+
+<section id="pricing" class="section" aria-label="Pricing">
+<div class="wrapper">
+<h2 data-animate>Pricing</h2>
+<p class="lead" data-animate data-delay="1">Transparent, flexible options tailored to your project scope.</p>
+
+<div class="grid pricing">
+<div class="card price" data-animate data-delay="1">
+<span class="badge">Popular</span>
+<h3>Launch</h3>
+<div class="price"><span class="currency">$</span><span class="amount">2,500</span><span class="term">/project</span></div>
+<ul class="features">
+<li>Up to 5 pages</li>
+<li>Responsive design</li>
+<li>SEO essentials</li>
+<li>Analytics setup</li>
+<li>1 round of revisions</li>
+<li>Basic CMS or static</li>
+<li>2 weeks delivery</li>
+</ul>
+<div class="price-footer">Ideal for landing pages and MVPs.</div>
+<a href="#contact" class="btn primary" style="margin-top:.8rem">Start</a>
+</div>
+
+<div class="card price" data-animate data-delay="2">
+<h3>Scale</h3>
+<div class="price"><span class="currency">$</span><span class="amount">6,500</span><span class="term">/project</span></div>
+<ul class="features">
+<li>10–20 pages</li>
+<li>Custom design system</li>
+<li>Headless CMS</li>
+<li>Advanced animations</li>
+<li>On‑page SEO + schema</li>
+<li>Performance budget</li>
+<li>4–6 weeks delivery</li>
+</ul>
+<div class="price-footer">Great for marketing sites and growing brands.</div>
+<a href="#contact" class="btn primary" style="margin-top:.8rem">Plan a Build</a>
+</div>
+
+<div class="card price" data-animate data-delay="3">
+<h3>Partner</h3>
+<div class="price"><span class="currency">$</span><span class="amount">3,000</span><span class="term">/mo</span></div>
+<ul class="features">
+<li>Ongoing improvements</li>
+<li>A/B testing & CRO</li>
+<li>Priority support</li>
+<li>Monthly roadmap</li>
+<li>Issue SLAs</li>
+<li>Cancel anytime</li>
+</ul>
+<div class="price-footer">For teams that want a dedicated fractional dev.</div>
+<a href="#contact" class="btn primary" style="margin-top:.8rem">Retain Me</a>
+</div>
+
+<div class="card price" data-animate data-delay="4">
+<span class="badge">Custom</span>
+<h3>Custom</h3>
+<div class="price"><span class="currency">$</span><span class="amount">Quote</span><span class="term"></span></div>
+<ul class="features">
+<li>Complex web apps</li>
+<li>E‑commerce & subscriptions</li>
+<li>SSO, auth, memberships</li>
+<li>3rd‑party integrations</li>
+<li>Design sprints & UX</li>
+<li>Scoped estimate & timeline</li>
+</ul>
+<div class="price-footer">Tailored to unique requirements and constraints.</div>
+<a href="#contact" class="btn primary" style="margin-top:.8rem">Request Quote</a>
+</div>
+</div>
+
+<div class="card calc" data-animate data-delay="2" style="margin-top:1.2rem">
+<h3>Website Price Calculator</h3>
+<p class="kicker">Select options to estimate project cost and timeline.</p>
+<form id="calc-form" class="calc-grid" aria-label="Price calculator">
+<div class="field">
+<label><span class="label">Site type</span>
+<select name="type" id="c-type">
+<option value="landing">Landing page</option>
+<option value="marketing" selected>Marketing site</option>
+<option value="app">Web app</option>
+</select></label>
+</div>
+
+<div class="field">
+<label><span class="label">Pages</span>
+<div class="inline">
+<input type="range" id="c-pages" name="pages" min="1" max="50" value="10">
+<output id="pages-out" for="c-pages">10</output>
+</div>
+</label>
+</div>
+
+<div class="field">
+<label><span class="label">Design complexity</span>
+<select id="c-design" name="design">
+<option value="basic">Basic</option>
+<option value="custom" selected>Custom</option>
+<option value="premium">Premium</option>
+</select>
+</label>
+</div>
+
+<div class="field">
+<label><span class="label">CMS</span>
+<select id="c-cms" name="cms">
+<option value="none">None</option>
+<option value="basic">Basic</option>
+<option value="headless" selected>Headless</option>
+</select>
+</label>
+</div>
+
+<div class="field">
+<label><span class="label">E‑commerce</span>
+<select id="c-commerce" name="commerce">
+<option value="none" selected>None</option>
+<option value="storefront">Storefront</option>
+<option value="subscriptions">Subscriptions</option>
+</select>
+</label>
+</div>
+
+<div class="field">
+<label><span class="label">Animations & motion</span>
+<select id="c-motion" name="motion">
+<option value="none">None</option>
+<option value="standard" selected>Standard</option>
+<option value="advanced">Advanced</option>
+</select>
+</label>
+</div>
+
+<div class="field">
+<label><span class="label">Integrations</span>
+<div class="inline">
+<input type="range" id="c-integrations" name="integrations" min="0" max="6" value="2">
+<output id="integrations-out" for="c-integrations">2</output>
+</div>
+</label>
+</div>
+
+<div class="field">
+<label><span class="label">Locales</span>
+<div class="inline">
+<input type="number" id="c-locales" name="locales" min="1" value="1">
+<span class="pill">+$600 per extra locale</span>
+</div>
+</label>
+</div>
+
+<div class="field">
+<label><span class="label">Auth/Members</span>
+<select id="c-auth" name="auth">
+<option value="none" selected>None</option>
+<option value="auth">Auth</option>
+<option value="members">Auth + members</option>
+</select>
+</label>
+</div>
+
+<div class="field">
+<label><span class="label">SEO package</span>
+<select id="c-seo" name="seo">
+<option value="basic" selected>Basic</option>
+<option value="pro">Pro</option>
+</select>
+</label>
+</div>
+
+<div class="field">
+<label><span class="label">Timeline</span>
+<select id="c-timeline" name="timeline">
+<option value="normal" selected>Standard</option>
+<option value="rush">Rush</option>
+</select>
+</label>
+</div>
+
+<div class="field">
+<label><span class="label">Maintenance</span>
+<select id="c-maint" name="maint">
+<option value="none" selected>None</option>
+<option value="standard">$200/mo</option>
+<option value="premium">$600/mo</option>
+</select>
+</label>
+</div>
+</form>
+
+<div class="estimate" aria-live="polite">
+<div>Estimated project cost</div>
+<div class="big" id="est-total">$0</div>
+<div id="est-timeline">Timeline: ~0 weeks</div>
+<div id="est-maint">Optional maintenance: $0/mo</div>
+<div style="display:flex; gap:.6rem; flex-wrap:wrap; margin-top:.4rem">
+<button id="copy-estimate" class="btn small">Copy estimate</button>
+<a href="#contact" class="btn small primary">Start a project</a>
+</div>
+</div>
+</div>
+
+</div>
+</section>
+
+<section id="contact" class="section" aria-label="Contact">
+<div class="wrapper">
+<h2 data-animate>Contact</h2>
+<p class="lead" data-animate data-delay="1">Tell me about your project. I respond within 24 hours.</p>
+
+<div class="contact-grid">
+<form id="contact-form" class="form card" novalidate data-animate data-delay="2" style="padding:1.2rem">
+<div class="field">
+<label><span class="label">Name</span>
+<input type="text" name="name" placeholder="Your full name" required>
+</label>
+<span class="error" data-error-for="name"></span>
+</div>
+<div class="field">
+<label><span class="label">Email</span>
+<input type="email" name="email" inputmode="email" placeholder="you@company.com" required>
+</label>
+<span class="error" data-error-for="email"></span>
+</div>
+<div class="field">
+<label><span class="label">Budget</span>
+<select name="budget" required>
+<option value="" disabled selected>Select a range</option>
+<option value="2500-5000">$2,500 – $5,000</option>
+<option value="5000-10000">$5,000 – $10,000</option>
+<option value="10000+">$10,000+</option>
+</select>
+</label>
+<span class="error" data-error-for="budget"></span>
+</div>
+<div class="field">
+<label><span class="label">Project Details</span>
+<textarea name="message" id="message" placeholder="What are you building? Goals, timeline, and any links." required minlength="20"></textarea>
+</label>
+<span class="error" data-error-for="message"></span>
+</div>
+<div class="form-actions">
+<button type="submit" class="btn primary">Send Message</button>
+<button type="button" class="btn ghost" id="paste-estimate">Paste estimate</button>
+<span class="form-status" id="form-status" role="status" aria-live="polite"></span>
+</div>
+</form>
+
+<aside class="card contact-card" data-animate data-delay="3">
+<h3 style="margin:0 0 .6rem">Contact Details</h3>
+<ul class="contact-list">
+<li><strong>Email:</strong> <a href="mailto:hello@jadedoe.dev">hello@jadedoe.dev</a></li>
+<li><strong>Location:</strong> Remote • GMT‑5 (Americas)</li>
+<li><strong>Calls:</strong> Mon–Fri, 9am–5pm</li>
+<li><strong>Response:</strong> within 1 business day</li>
+</ul>
+<div style="height:10px"></div>
+<div style="display:flex; gap:.5rem; flex-wrap:wrap">
+<a class="pill" href="#" rel="noopener">LinkedIn</a>
+<a class="pill" href="#" rel="noopener">GitHub</a>
+<a class="pill" href="#" rel="noopener">Twitter</a>
+</div>
+<div style="height:10px"></div>
+<div class="kicker">Prefer email? Include any docs or links. I’ll review and follow up with next steps.</div>
+</aside>
+</div>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="wrapper">
+<div>© <span id="year"></span> Jade Doe. Built with love, caffeine, and clean code.</div>
+</div>
+</footer>
+
+<script>
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const io = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('in-view') }) }, { threshold: 0.2 });
+document.querySelectorAll('[data-animate]').forEach(el => io.observe(el));
+
+const curtain = document.getElementById('transition');
+function transitionTo(target) {
+if (!target) return;
+if (reduceMotion) { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); return }
+const inAnim = curtain.animate([{ transform: 'translateY(100%)' }, { transform: 'translateY(0%)' }], { duration: 520, easing: 'cubic-bezier(.6,.2,.1,1)', fill: 'forwards' });
+inAnim.finished.then(() => {
+target.scrollIntoView({ behavior: 'auto', block: 'start' });
+return curtain.animate([{ transform: 'translateY(0%)' }, { transform: 'translateY(-100%)' }], { duration: 620, easing: 'cubic-bezier(.6,.2,.1,1)', fill: 'forwards' }).finished
+}).then(() => { curtain.style.transform = 'translateY(100%)' })
+}
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+a.addEventListener('click', e => {
+const id = a.getAttribute('href').slice(1);
+const target = document.getElementById(id);
+if (target) { e.preventDefault(); transitionTo(target) }
+})
+});
+
+document.querySelectorAll('[data-tilt]').forEach(el => {
+const max = 10; let frame;
+function setTilt(x, y) { el.style.transform = `perspective(900px) rotateX(${y}deg) rotateY(${x}deg)` }
+el.addEventListener('pointermove', e => {
+const r = el.getBoundingClientRect();
+const px = (e.clientX - r.left) / r.width;
+const py = (e.clientY - r.top) / r.height;
+const rotY = (px - 0.5) * max * 2;
+const rotX = (0.5 - py) * max * 2;
+if (frame) cancelAnimationFrame(frame);
+frame = requestAnimationFrame(() => setTilt(rotY.toFixed(2), rotX.toFixed(2)));
+});
+el.addEventListener('pointerleave', () => {
+if (frame) cancelAnimationFrame(frame);
+el.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg)';
+});
+});
+
+const form = document.getElementById('contact-form');
+const statusEl = document.getElementById('form-status');
+const errors = { name: 'Please enter your name.', email: 'Please enter a valid email address.', budget: 'Please select a budget range.', message: 'Please provide at least 20 characters.' };
+function showError(name, message) { const el = document.querySelector(`[data-error-for="${name}"]`); if (el) el.textContent = message || '' }
+function validateField(field) {
+let valid = true;
+if (!field.value || (field.name === 'message' && field.value.trim().length < 20)) valid = false;
+if (field.type === 'email') { const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value); if (!ok) valid = false }
+showError(field.name, valid ? '' : errors[field.name]);
+return valid
+}
+form.addEventListener('input', e => { if (e.target.name) validateField(e.target) });
+form.addEventListener('submit', e => {
+e.preventDefault();
+const fields = ['name', 'email', 'budget', 'message'].map(n => form.elements[n]);
+const allValid = fields.every(validateField);
+if (!allValid) { statusEl.textContent = 'Please fix the errors above.'; return }
+statusEl.textContent = 'Sending...';
+const btn = form.querySelector('button[type="submit"]');
+btn.disabled = true;
+setTimeout(() => {
+statusEl.textContent = 'Thanks! Your message has been sent.';
+statusEl.style.color = 'var(--success)';
+form.reset();
+btn.disabled = false;
+}, 1000);
+});
+
+document.getElementById('year').textContent = new Date().getFullYear();
+
+const $ = (id) => document.getElementById(id);
+const fmt = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
+const calc = {
+type: $('c-type'),
+pages: $('c-pages'),
+design: $('c-design'),
+cms: $('c-cms'),
+commerce: $('c-commerce'),
+motion: $('c-motion'),
+integrations: $('c-integrations'),
+locales: $('c-locales'),
+auth: $('c-auth'),
+seo: $('c-seo'),
+timeline: $('c-timeline'),
+maint: $('c-maint')
+};
+$('pages-out').textContent = calc.pages.value;
+$('integrations-out').textContent = calc.integrations.value;
+
+['input', 'change'].forEach(evt => {
+calc.pages.addEventListener(evt, () => $('pages-out').textContent = calc.pages.value);
+calc.integrations.addEventListener(evt, () => $('integrations-out').textContent = calc.integrations.value);
+});
+
+function estimate() {
+let base = 0;
+if (calc.type.value === 'landing') base = 1500;
+if (calc.type.value === 'marketing') base = 2500;
+if (calc.type.value === 'app') base = 5000;
+
+const pages = Math.max(1, parseInt(calc.pages.value || '1', 10));
+const pageRate = calc.type.value === 'app' ? 300 : 200;
+let pagesCost = (pages - 1) * pageRate;
+
+let designMul = 1;
+if (calc.design.value === 'custom') designMul = 1.25;
+if (calc.design.value === 'premium') designMul = 1.5;
+
+let cmsCost = 0;
+if (calc.cms.value === 'basic') cmsCost = 600;
+if (calc.cms.value === 'headless') cmsCost = 1200;
+
+let commerceCost = 0;
+if (calc.commerce.value === 'storefront') commerceCost = 2500;
+if (calc.commerce.value === 'subscriptions') commerceCost = 3500;
+
+let motionCost = 0;
+if (calc.motion.value === 'standard') motionCost = 800;
+if (calc.motion.value === 'advanced') motionCost = 2000;
+
+const integrations = parseInt(calc.integrations.value || '0', 10);
+const integrationsCost = integrations * 600;
+
+const locales = Math.max(1, parseInt(calc.locales.value || '1', 10));
+const i18nCost = (locales - 1) * 600;
+
+let authCost = 0;
+if (calc.auth.value === 'auth') authCost = 1500;
+if (calc.auth.value === 'members') authCost = 2500;
+
+let seoCost = 0;
+if (calc.seo.value === 'pro') seoCost = 800;
+
+let subtotal = (base + pagesCost) * designMul + cmsCost + commerceCost + motionCost + integrationsCost + i18nCost + authCost + seoCost;
+
+let timelineMul = calc.timeline.value === 'rush' ? 1.3 : 1;
+let total = Math.round(subtotal * timelineMul);
+
+let weeks = 2 + Math.ceil(pages / 4) + Math.ceil(integrations / 2);
+if (calc.cms.value !== 'none') weeks += 1;
+if (calc.commerce.value !== 'none') weeks += 2;
+if (calc.motion.value === 'advanced') weeks += 1;
+if (calc.timeline.value === 'rush') weeks = Math.max(2, Math.ceil(weeks * 0.75));
+
+let maintMonthly = 0;
+if (calc.maint.value === 'standard') maintMonthly = 200;
+if (calc.maint.value === 'premium') maintMonthly = 600;
+
+$('est-total').textContent = fmt.format(total);
+$('est-timeline').textContent = `Timeline: ~${weeks} week${weeks === 1 ? '' : 's'}`;
+$('est-maint').textContent = `Optional maintenance: ${fmt.format(maintMonthly)}/mo`;
+
+return { total, weeks, maintMonthly, summary: buildSummary({ total, weeks, maintMonthly }) }
+}
+
+function buildSummary({ total, weeks, maintMonthly }) {
+const kv = (k, v) => `${k}: ${v}`;
+const lines = [
+kv('Type', calc.type.value),
+kv('Pages', calc.pages.value),
+kv('Design', calc.design.value),
+kv('CMS', calc.cms.value),
+kv('Commerce', calc.commerce.value),
+kv('Motion', calc.motion.value),
+kv('Integrations', calc.integrations.value),
+kv('Locales', calc.locales.value),
+kv('Auth', calc.auth.value),
+kv('SEO', calc.seo.value),
+kv('Timeline', calc.timeline.value),
+kv('Maintenance', maintMonthly ? fmt.format(maintMonthly) + '/mo' : 'None'),
+kv('Estimated cost', fmt.format(total)),
+kv('Estimated timeline', `~${weeks} week${weeks === 1 ? '' : 's'}`)
+];
+return `Project estimate\n${lines.join('\n')}`
+}
+
+Object.values(calc).forEach(el => el.addEventListener('change', estimate));
+Object.values(calc).forEach(el => el.addEventListener('input', estimate));
+estimate();
+
+let copiedEstimate = '';
+$('copy-estimate').addEventListener('click', () => {
+const est = estimate();
+copiedEstimate = est.summary;
+try {
+navigator.clipboard.writeText(est.summary);
+$('copy-estimate').textContent = 'Copied';
+setTimeout(() => $('copy-estimate').textContent = 'Copy estimate', 1600);
+} catch {
+$('copy-estimate').textContent = 'Ready to paste';
+setTimeout(() => $('copy-estimate').textContent = 'Copy estimate', 1600);
+}
+});
+
+$('paste-estimate').addEventListener('click', () => {
+const area = document.getElementById('message');
+if (!copiedEstimate) { copiedEstimate = estimate().summary }
+const joiner = area.value.trim().length ? '\n\n' : '';
+area.value = area.value + joiner + copiedEstimate;
+area.dispatchEvent(new Event('input', { bubbles: true }));
+area.focus();
+});
+
+</script>
+</body>
+</html>
