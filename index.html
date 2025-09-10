@@ -31,10 +31,12 @@ body::after { inset: auto auto -20vmax -10vmax; width: 48vmax; height: 48vmax; b
 @keyframes float2 { from { transform: translate3d(2vmax,-1vmax,0) } to { transform: translate3d(-2vmax,1vmax,0) } }
 
 .container { width: min(1120px, 92vw); margin-inline: auto }
-.section { min-height: 100vh; display: flex; align-items: center; padding: 120px 0 80px; scroll-snap-align: start }
+.section { min-height: 100vh; display: flex; align-items: center; padding: 120px 0 80px; scroll-snap-align: start; position: relative }
 .wrapper { width: min(1120px, 92vw); margin-inline: auto }
 
 header.nav { position: sticky; top: 0; z-index: 50; backdrop-filter: saturate(180%) blur(14px); background: linear-gradient(180deg, rgba(10,12,20,.7), rgba(10,12,20,.3)); border-bottom: 1px solid var(--border) }
+header.nav::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: linear-gradient(90deg, #06b6d4, #7c3aed, #22d3ee, #06b6d4); background-size: 200% 100%; animation: stripe 10s linear infinite }
+@keyframes stripe { to { background-position: -200% 0 } }
 .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; width: min(1120px, 92vw); margin: 0 auto }
 .logo { font-weight: 900; letter-spacing: .5px; font-size: 1.1rem; display: inline-flex; align-items: center; gap: .6rem }
 .logo-badge {
@@ -177,13 +179,71 @@ animation: drift var(--dur, 28s) linear infinite; transform: translate3d(0,0,0);
 100% { transform: translate3d(var(--xEnd, 0), -20vh, 0) rotate(0.001deg) }
 }
 
+.board {
+position: fixed; inset: 0; z-index: -1; opacity: .16; pointer-events: none; mix-blend-mode: screen
+}
+.board .trace { fill: none; stroke: #39c9ff; stroke-opacity: .7; stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 8 10; animation: dash 18s linear infinite }
+.board .trace.alt { stroke: #a78bfa; stroke-opacity: .6; animation-duration: 24s }
+.board .node { fill: #22d3ee; opacity: .8; filter: drop-shadow(0 0 6px rgba(34,211,238,.6)) }
+.board .node.purple { fill: #c4b5fd; filter: drop-shadow(0 0 6px rgba(124,58,237,.6)) }
+@keyframes dash { to { stroke-dashoffset: -1000 } }
+
+.hero-float { position: absolute; inset: 0; pointer-events: none; z-index: 0 }
+.geom {
+position: absolute; width: var(--size, 44px); height: var(--size, 44px);
+top: var(--top, 20%); left: var(--left, 20%);
+opacity: .35; filter: drop-shadow(0 8px 20px rgba(0,0,0,.35));
+animation: bob var(--dur, 12s) ease-in-out infinite, spin var(--spin, 16s) linear infinite;
+transform-origin: 50% 50%;
+}
+.geom svg { display: block; width: 100%; height: 100% }
+.geom path, .geom polygon, .geom circle { stroke-width: 2; fill: none }
+.geom.cyan { stroke: #22d3ee }
+.geom.purple { stroke: #a78bfa }
+.geom.pink { stroke: #f472b6 }
+@keyframes bob { 0% { transform: translate3d(0,0,0) } 50% { transform: translate3d(0,-16px,0) } 100% { transform: translate3d(0,0,0) } }
+@keyframes spin { to { transform: rotate(360deg) } }
+
 @media (prefers-reduced-motion: reduce) {
 [data-animate] { opacity: 1; transform: none; filter: none }
 .code-float { display: none }
+header.nav::after { animation: none }
+.board .trace { animation: none }
+.geom { animation: none }
+.orb { animation: none }
 }
 </style>
 </head>
 <body>
+<svg class="board" viewBox="0 0 1200 800" preserveAspectRatio="none" aria-hidden="true">
+<g>
+<path class="trace" d="M40 120 H420 C480 120 520 160 600 160 H1120" />
+<circle class="node" cx="420" cy="120" r="3" />
+<circle class="node" cx="600" cy="160" r="3" />
+</g>
+<g>
+<path class="trace alt" d="M80 260 H360 C420 260 440 220 520 220 H900 V100 C900 70 940 70 980 100 H1160" />
+<circle class="node purple" cx="520" cy="220" r="3" />
+<circle class="node purple" cx="900" cy="100" r="3" />
+<circle class="node" cx="980" cy="100" r="3" />
+</g>
+<g>
+<path class="trace" d="M60 400 H300 C360 400 380 360 430 360 H730 C770 360 810 330 840 300 S900 260 960 260 H1160" />
+<circle class="node" cx="430" cy="360" r="3" />
+<circle class="node" cx="840" cy="300" r="3" />
+</g>
+<g>
+<path class="trace alt" d="M120 520 H440 C520 520 540 560 600 560 H820 C860 560 900 600 940 640 H1160" />
+<circle class="node purple" cx="600" cy="560" r="3" />
+<circle class="node" cx="940" cy="640" r="3" />
+</g>
+<g>
+<path class="trace" d="M100 680 H360 C420 680 460 640 520 640 H720 C780 640 820 600 860 560 H1100" />
+<circle class="node" cx="520" cy="640" r="3" />
+<circle class="node purple" cx="860" cy="560" r="3" />
+</g>
+</svg>
+
 <div id="transition" aria-hidden="true"></div>
 <header class="nav">
 <div class="nav-inner">
@@ -230,6 +290,23 @@ animation: drift var(--dur, 28s) linear infinite; transform: translate3d(0,0,0);
 <div class="hero-decor" aria-hidden="true">
 <div class="orb a" style="left:-10%; top:10%"></div>
 <div class="orb b"></div>
+<div class="hero-float">
+<div class="geom cyan" style="--size:58px; --top:20%; --left:12%; --dur:12s; --spin:24s">
+<svg viewBox="0 0 100 100" aria-hidden="true"><polygon points="50,5 95,50 50,95 5,50"/></svg>
+</div>
+<div class="geom purple" style="--size:42px; --top:36%; --left:72%; --dur:10s; --spin:18s">
+<svg viewBox="0 0 100 100" aria-hidden="true"><polygon points="50,8 90,32 90,78 50,92 10,68 10,22"/></svg>
+</div>
+<div class="geom pink" style="--size:36px; --top:64%; --left:26%; --dur:14s; --spin:22s">
+<svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="38"/></svg>
+</div>
+<div class="geom cyan" style="--size:28px; --top:58%; --left:82%; --dur:11s; --spin:16s">
+<svg viewBox="0 0 100 100" aria-hidden="true"><path d="M20 50 H80 M50 20 V80"/></svg>
+</div>
+<div class="geom purple" style="--size:50px; --top:12%; --left:54%; --dur:13s; --spin:26s">
+<svg viewBox="0 0 100 100" aria-hidden="true"><path d="M10 50 C10 20, 90 20, 90 50 S10 80, 10 50"/></svg>
+</div>
+</div>
 </div>
 </section>
 
@@ -748,7 +825,6 @@ area.value = area.value + joiner + copiedEstimate;
 area.dispatchEvent(new Event('input', { bubbles: true }));
 area.focus();
 });
-
 </script>
 </body>
 </html>
